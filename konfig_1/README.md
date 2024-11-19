@@ -72,6 +72,8 @@ python3.12
 python -m unittest discover
 
 **Скриншот тестирования:**
-![image](https://github.com/user-attachments/assets/6662e834-2b0e-47dc-a0a3-d47097b99ca7)
+![image](https://github.com/user-attachments/assets/a8f575c2-8672-4b1c-89b8-f58e9a76d342)
+
+
 
 
