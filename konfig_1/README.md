@@ -45,28 +45,33 @@ python3.12
 - chown - UNIX‐утилита, изменяющая владельца и/или группу для указанных файлов
 
 ## Запуск
+![image](https://github.com/user-attachments/assets/7d06143b-a409-42a0-a385-43f6063bdd7a)
 
 **Пример использования комманд cd и ls:**
 
-![image](https://github.com/user-attachments/assets/9d297225-1024-424b-80db-3f73fbd2e1d7)
+![image](https://github.com/user-attachments/assets/304e785d-ed76-4a1c-9ddf-843b13f493ea)
 
 **Пример использования команды rmdir:**
 
-
-![image]()
+![image](https://github.com/user-attachments/assets/52884c7e-6f0b-4f45-96db-5dc87e142168)
 
 **Пример использования команды date:**
 
-![image]()
+![image](https://github.com/user-attachments/assets/3038b274-5ed1-448b-8b45-8a46513f11b5)
+
 **Пример использования команды chown:**
 
-![image]()
+![image](https://github.com/user-attachments/assets/e2f5ad59-0c23-492f-ad31-6fdc306a5302)
+
 **Пример использования exit:**
 
-![image]()
+![image](https://github.com/user-attachments/assets/e4e0753a-7c55-496f-ab13-9d49bc6b8fae)
 
 ## Тестирование
 
 python -m unittest discover
 
 **Скриншот тестирования:**
+![image](https://github.com/user-attachments/assets/6662e834-2b0e-47dc-a0a3-d47097b99ca7)
+
+
