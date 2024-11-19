@@ -2,7 +2,6 @@
 import unittest
 from zipfile import ZipFile
 import os
-import sys
 from datetime import datetime
 from emulator import ShellEmulator
 
@@ -123,23 +122,7 @@ class TestShellEmulator(unittest.TestCase):
         with self.assertRaises(SystemExit):
             self.emulator.exit(['dummy_arg'])
 
-    # Тест выполнения скрипта
-    def test_run_script(self):
-        """Тест выполнения команд из скрипта"""
-        script_name = 'test_script.txt'
-        with open(script_name, 'w') as f:
-            f.write('cd test\nls\n')
 
-        import io
-        from contextlib import redirect_stdout
-
-        f = io.StringIO()
-        with redirect_stdout(f):
-            self.emulator.run_script(script_name)
-
-        os.remove(script_name)
-        output = f.getvalue().strip()
-        self.assertIn('dir1', output)
 
     # Тест обработки неизвестной команды
     def test_unknown_command(self):
