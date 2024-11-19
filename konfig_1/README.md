@@ -45,7 +45,8 @@ python3.12
 - chown - UNIX‐утилита, изменяющая владельца и/или группу для указанных файлов
 
 ## Запуск
-![image](https://github.com/user-attachments/assets/7d06143b-a409-42a0-a385-43f6063bdd7a)
+![image](https://github.com/user-attachments/assets/1a35805b-3bc4-4d25-bac1-cee24dbd23b9)
+
 
 **Пример использования комманд cd и ls:**
 
