@@ -3,25 +3,17 @@ from zipfile import ZipFile
 import argparse
 from datetime import datetime
 import os
-
+import json
 
 class ShellEmulator:
-    def __init__(self, user_name, path_to_arxiv, path_to_script=None):
+    def __init__(self, user_name, path_to_arxiv):
         self.user_name = user_name
         self.path_to_arxiv = path_to_arxiv
-        self.path_to_script = path_to_script
         self.cwd = '/'
         self.virtual_sys_folder = ZipFile(path_to_arxiv, 'a')
-        self.file_owners = {}  # Инициализируем словарь для хранения владельцев файлов
-
-        # Инициализируем владельцев для всех существующих файлов и директорий
+        self.file_owners = {}
         for path in self.virtual_sys_folder.namelist():
             self.file_owners[path] = self.user_name
-
-    def run_script(self, script_path):
-        with open(script_path, 'r') as script:
-            for line in script:
-                self.execute_command(line.strip())
 
     def execute_command(self, command):
         if not command:
@@ -153,14 +145,13 @@ class ShellEmulator:
 
         self.file_owners[full_path] = owner
         print(f"Changed owner of '{path}' to {owner}")
+
     def exit(self, args=None):
         print("Bye!")
         self.virtual_sys_folder.close()
         sys.exit(0)
 
     def run(self):
-        if self.path_to_script and self.path_to_script.startswith("./"):
-            self.run_script(self.path_to_script)
         try:
             while True:
                 command = input(f"{self.user_name}@{self.cwd}> ")
@@ -173,11 +164,25 @@ def args_parser():
     parser = argparse.ArgumentParser(description="Shell Emulator")
     parser.add_argument("user_name", nargs="?", help="Username", default="username")
     parser.add_argument("path_to_arxiv", nargs="?", help="Path to virtual file system", default="./file_system.zip")
-    parser.add_argument("path_to_script", nargs="?", default=None)
     return parser.parse_args()
 
+def load_config(config_path="config.json"):
+    # Если конфиг существует, загружаем его, иначе создаем новый
+    if not os.path.exists(config_path):
+        # Стандартные значения
+        default_config = {
+            "user_name": "username",
+            "path_to_arxiv": "./file_system.zip"
+        }
+        with open(config_path, "w") as config_file:
+            json.dump(default_config, config_file, indent=4)
+        print(f"Configuration file '{config_path}' was created with default settings.")
+        return default_config
+
+    with open(config_path, "r") as config_file:
+        return json.load(config_file)
 
 if __name__ == '__main__':
-    args = args_parser()
-    emulator = ShellEmulator(args.user_name, args.path_to_arxiv, args.path_to_script)
+    config = load_config()
+    emulator = ShellEmulator(config["user_name"], config["path_to_arxiv"])
     emulator.run()
