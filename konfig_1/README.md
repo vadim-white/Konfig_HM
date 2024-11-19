@@ -48,12 +48,20 @@ python3.12
 
 1. Клонировать репозиторий:
 
+   ```html
    git clone https://github.com/vadim-white/Konfig_HM.git
-2. Перейти в папку с проектом
+   ```
+3. Перейти в папку с проектом
    
+   ```html
    cd konfig_1
+   ```
   
-3. запустить эмулятор
+5. запустить эмулятор
+   
+   ```html
+   python3 emulator.py
+   ```
 
 ![image](https://github.com/user-attachments/assets/1a35805b-3bc4-4d25-bac1-cee24dbd23b9)
 
